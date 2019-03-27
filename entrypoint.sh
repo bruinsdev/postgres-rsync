@@ -23,4 +23,4 @@ ln -s /root/sshd/ssh_host_ecdsa_key.pub /etc/ssh
 ln -s /root/sshd/ssh_host_ed25519_key /etc/ssh
 ln -s /root/sshd/ssh_host_ed25519_key.pub /etc/ssh
 
-/usr/sbin/sshd -e && /usr/local/bin/docker-entrypoint.sh postgres
+passwd postgres -u && /usr/sbin/sshd -e && /usr/local/bin/docker-entrypoint.sh postgres
