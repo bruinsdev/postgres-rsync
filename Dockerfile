@@ -2,14 +2,12 @@ FROM postgres:11-alpine
 
 EXPOSE 22
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY Makefile /Makefile
 
 VOLUME /root/sshd
 
 RUN apk update \
-    && apk add rsync openssh \
-    && ln -s /usr/local/bin/entrypoint.sh / \
-    && chmod 777 /usr/local/bin/entrypoint.sh
+    && apk add rsync openssh make
 
-ENTRYPOINT /usr/local/bin/entrypoint.sh
-CMD "postgres"
+ENTRYPOINT make
+CMD "default"
